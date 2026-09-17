@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "skills": {},
+  "instructions": {
+    "common": []
+  },
+  "agents": {
+    "codex": {
+      "skills": [],
+      "instructions": [],
+      "skills_dir": ".codex/skills",
+      "instruction_file": ".codex/AGENTS.md",
+      "audit_skills": [
+        ".codex/skills",
+        ".agents/skills"
+      ],
+      "audit_instructions": [
+        ".codex/AGENTS.md",
+        ".codex/AGENTS.override.md"
+      ]
+    },
+    "claude": {
+      "skills": [],
+      "instructions": [],
+      "skills_dir": ".claude/skills",
+      "instruction_file": ".claude/CLAUDE.md",
+      "audit_skills": [
+        ".claude/skills"
+      ],
+      "audit_instructions": [
+        ".claude/CLAUDE.md",
+        ".claude/rules"
+      ]
+    },
+    "grok": {
+      "skills": [],
+      "instructions": [],
+      "skills_dir": ".grok/skills",
+      "instruction_file": ".grok/AGENTS.md",
+      "audit_skills": [
+        ".grok/skills",
+        ".claude/skills",
+        ".agents/skills"
+      ],
+      "audit_instructions": [
+        ".grok/AGENTS.md",
+        ".grok/Agents.md",
+        ".grok/AGENT.md",
+        ".grok/CLAUDE.md",
+        ".grok/Claude.md",
+        ".grok/CLAUDE.local.md",
+        ".grok/rules",
+        ".claude/CLAUDE.md",
+        ".claude/rules"
+      ]
+    },
+    "opencode": {
+      "skills": [],
+      "instructions": [],
+      "skills_dir": ".config/opencode/skills",
+      "instruction_file": ".config/opencode/AGENTS.md",
+      "audit_skills": [
+        ".config/opencode/skills",
+        ".claude/skills",
+        ".agents/skills"
+      ],
+      "audit_instructions": [
+        ".config/opencode/AGENTS.md",
+        ".claude/CLAUDE.md"
+      ]
+    }
+  }
+}

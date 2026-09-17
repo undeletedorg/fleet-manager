@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-01-01T09:00:00.000000+00:00",
+  "action": "update",
+  "dry_run": false,
+  "hosts": [
+    {
+      "name": "workstation01",
+      "hostname": "workstation01.mgmt.example.internal",
+      "user": "youruser",
+      "status": "ok",
+      "services": {},
+      "tools": {
+        "codex": {
+          "status": "unchanged",
+          "before": "0.154.0",
+          "after": "0.154.0",
+          "path": "/home/youruser/.local/bin/codex"
+        },
+        "claude": {
+          "status": "updated",
+          "before": "2.1.269",
+          "after": "2.1.270",
+          "path": "/home/youruser/.local/bin/claude"
+        },
+        "git": {
+          "status": "check_only",
+          "before": "2.53.0",
+          "after": "2.53.0",
+          "path": "/usr/bin/git"
+        }
+      }
+    },
+    {
+      "name": "workstation02",
+      "hostname": "workstation02.mgmt.example.internal",
+      "user": "youruser",
+      "status": "ok",
+      "services": {},
+      "tools": {
+        "codex": {
+          "status": "unchanged",
+          "before": "0.154.0",
+          "after": "0.154.0",
+          "path": "/home/youruser/.local/bin/codex"
+        },
+        "claude": {
+          "status": "updated",
+          "before": "2.1.269",
+          "after": "2.1.270",
+          "path": "/home/youruser/.local/bin/claude"
+        },
+        "git": {
+          "status": "check_only",
+          "before": "2.53.0",
+          "after": "2.53.0",
+          "path": "/usr/bin/git"
+        }
+      }
+    },
+    {
+      "name": "compose01",
+      "hostname": "compose01.mgmt.example.internal",
+      "user": "root",
+      "status": "host_key_untrusted",
+      "tools": {},
+      "services": {},
+      "error": "SSH host key is missing, changed, or unsupported; verify it through a trusted channel."
+    }
+  ]
+}

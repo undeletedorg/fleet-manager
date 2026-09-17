@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "ssh": {"connect_timeout": 8},
+  "path_dirs": ["~/.local/bin", "~/.grok/bin", "~/.opencode/bin", "~/.npm-global/bin", "~/.bun/bin", "~/.nvm/versions/node/*/bin", "/usr/local/sbin", "/usr/local/bin", "/usr/sbin", "/usr/bin", "/sbin", "/bin"],
+  "tools": {
+    "codex": {"paths": ["~/.local/bin/codex"], "version_args": ["--version"], "update_args": ["update"], "installation": "native standalone; built-in updater"},
+    "claude": {"paths": ["~/.local/bin/claude"], "version_args": ["--version"], "update_args": ["update"], "installation": "native installation; self-updater"},
+    "grok": {"paths": ["~/.local/bin/grok", "~/.grok/bin/grok"], "version_args": ["--version"], "update_args": ["update"], "installation": "official vendor native CLI"},
+    "opencode": {"paths": ["~/.opencode/bin/opencode", "~/.local/bin/opencode"], "version_args": ["--version"], "update_args": ["upgrade"], "installation": "official curl installer; self-updater"},
+    "git": {"paths": ["/usr/bin/git"], "version_args": ["--version"], "update_args": null, "installation": "OS package; checked here, updated through OS maintenance"}
+  },
+  "service_updaters": {
+    "t3": {"paths": ["~/.local/bin/t3"], "version_args": ["--version"], "update_args": ["update", "--channel", "nightly", "--yes"], "installation": "self-contained launcher; needs no Node or npm. Use [\"update\", \"<exact-version>\", \"--yes\"] to pin a release."}
+  },
+  "hosts": [
+    {"name": "workstation01", "hostname": "workstation01.${FLEET_DOMAIN}", "user": "${FLEET_SSH_USER}", "groups": ["coding"], "tools": ["codex", "claude", "grok", "opencode", "git"], "tool_overrides": {}, "notes": "Example coding host. User-level tools; no sudo needed for CLI updates."},
+    {"name": "workstation02", "hostname": "workstation02.${FLEET_DOMAIN}", "user": "${FLEET_SSH_USER}", "groups": ["coding"], "tools": ["codex", "claude", "grok", "opencode", "git"], "tool_overrides": {}, "notes": "Example coding host running the background service."},
+    {"name": "compose01", "hostname": "compose01.${FLEET_DOMAIN}", "user": "root", "groups": ["docker"], "tools": []}
+  ],
+  "services": [
+    {"name": "example-app", "host": "compose01", "kind": "compose", "compose_file": "/srv/stacks/example/compose.yml", "url": "${SERVICE_URL}", "runbook": "docs/services/example-app.md", "last_recorded": "2026-01-01", "notes": "Compose stack health check: container states plus an HTTP 200 on the URL."},
+    {"name": "t3-workstation02", "host": "workstation02", "kind": "systemd_user", "unit": "t3code.service", "updater": "t3", "config_path": "~/.config/systemd/user/t3code.service", "runbook": "docs/services/t3-connect.md", "last_recorded": "2026-01-01", "notes": "systemd user service. Checked for active/running/enabled plus linger=yes, and updatable via the 't3' updater."}
+  ]
+}

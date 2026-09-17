@@ -1,0 +1,33 @@
+# This repository tracks the tool, never the fleet's own data.
+# Anything naming real hosts, users, addresses, or credentials stays local.
+# Sanitized stand-ins for every ignored file live in examples/.
+#
+# Leading slashes anchor these to the repository root, so the copies under
+# examples/ are still tracked.
+
+# Credentials and identifying values.
+/.env
+/.env.opencode
+
+# Live inventory: real hostnames and SSH users.
+# Stand-in: examples/inventory.json
+/inventory.json
+
+# Generated from the live inventory.
+# Stand-ins: examples/devices.md, examples/coding-agents-cli.md
+/devices.md
+/coding-agents-cli.md
+
+# Dated run logs: hostnames, usernames, resolved paths.
+# Stand-in: examples/logs/
+/logs/
+
+# Host-specific service runbooks: addresses, unit paths, home directories.
+/docs/services/
+
+# Runtime lock created by ./fleet to serialize log writes.
+/.fleet.lock
+
+# Python bytecode.
+__pycache__/
+*.py[cod]

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-01-01T09:05:00.000000+00:00",
+  "action": "service-update",
+  "dry_run": false,
+  "hosts": [
+    {
+      "name": "workstation02",
+      "hostname": "workstation02.mgmt.example.internal",
+      "user": "youruser",
+      "status": "ok",
+      "tools": {},
+      "services": {
+        "t3-workstation02": {
+          "status": "updated",
+          "before": "0.0.40",
+          "after": "0.0.41",
+          "path": "/home/youruser/.local/bin/t3",
+          "update_exit_code": 0,
+          "elapsed_seconds": 21.4,
+          "health": {
+            "LoadState": "loaded",
+            "ActiveState": "active",
+            "SubState": "running",
+            "UnitFileState": "enabled",
+            "linger": "yes"
+          }
+        }
+      }
+    }
+  ]
+}
